@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B818DADD-AD62-42E7-8AD0-218D167D142C}</ProjectGuid>
+    <ProjectGuid>{84F82EE4-213E-45A7-8176-A37625BCF26A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UWP.Tools</RootNamespace>
-    <AssemblyName>UWP.Tools</AssemblyName>
+    <RootNamespace>UWP.Tools.Navigation</RootNamespace>
+    <AssemblyName>UWP.Tools.Navigation</AssemblyName>
     <DefaultLanguage>pt-BR</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -106,14 +106,27 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\UWP.Tools.rd.xml" />
+    <EmbeddedResource Include="Properties\UWP.Tools.Navigation.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.6</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NetStandard\DependencyInjectionResolver\DependencyInjectionResolver\DependencyInjectionResolver.csproj">
+      <Project>{0814704c-97b3-418a-b789-22583c4cd25e}</Project>
+      <Name>DependencyInjectionResolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\NetStandard\Reflection.Optimization\Reflection.Optimization\Reflection.Optimization.csproj">
+      <Project>{7b9d547d-97c9-40d0-9226-a85b08909ae7}</Project>
+      <Name>Reflection.Optimization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWP.Tools.Xaml\UWP.Tools.Xaml.csproj">
+      <Project>{c87cb31a-35ad-4a71-bcb2-0ccb48f3d676}</Project>
+      <Name>UWP.Tools.Xaml</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
