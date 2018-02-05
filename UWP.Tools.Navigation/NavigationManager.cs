@@ -16,9 +16,12 @@ namespace UWP.Tools.Navigation {
         private static Page _previousPage;
         private static Page _actualPage;
         private static Page _nextPage;
-
-        private object _extraContent;
-        private string _pageTitle;
+        private static object _previousExtraContent;
+        private static object _extraContent;
+        private static object _nextExtraContent;
+        private static string _previousPageTitle;
+        private static string _pageTitle;
+        private static string _nextPageTitle;
 
         public NavigationManager(DependencyInjection dependencyInjection) {
             _dependencyInjection = dependencyInjection;
@@ -31,7 +34,9 @@ namespace UWP.Tools.Navigation {
             var page = default(T);
             try {
                 if (GetRootFrame().Content != null && GetRootFrame().Content is Page pg) {
+                    _previousPageTitle = pageTitle;
                     _previousPage = pg;
+                    _previousExtraContent = _extraContent;
                 }
                 page = _dependencyInjection.Resolve<T>();
                 NavigationEventHub.OnNavigating(_previousPage, new NavigationEventArgs(pageTitle, page, extra));
@@ -51,9 +56,17 @@ namespace UWP.Tools.Navigation {
             var navigated = false;
             if (CanGoBack()) {
                 if (GetRootFrame() is Frame mainFrame) {
+                    _nextPageTitle = _pageTitle;
                     _nextPage = _actualPage;
+                    _nextExtraContent = _extraContent;
+
+                    _pageTitle = _previousPageTitle;
                     _actualPage = _previousPage;
+                    _extraContent = _previousExtraContent;
+
+                    _previousPageTitle = null;
                     _previousPage = null;
+                    _previousExtraContent = null;
                     mainFrame.Content = _actualPage;
                     navigated = true;
                 }

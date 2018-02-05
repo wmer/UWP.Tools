@@ -106,6 +106,10 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Events\NavigationEventArgs.cs" />
+    <Compile Include="Events\NavigationEventHub.cs" />
+    <Compile Include="Events\NavigationFailedEventArgs.cs" />
+    <Compile Include="NavigationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\UWP.Tools.Navigation.rd.xml" />
   </ItemGroup>
