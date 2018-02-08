@@ -20,6 +20,7 @@ namespace UWP.Tools.Xaml {
             } else if (FindChildControl<T>(GetMainPage(), name) is T elCM) {
                 element = elCM;
             }
+            
             return element;
         }
 
@@ -40,7 +41,7 @@ namespace UWP.Tools.Xaml {
                     // ignored
                 }
             }
-
+            
             return resource;
         }
 
@@ -53,6 +54,7 @@ namespace UWP.Tools.Xaml {
             } catch {
                 // ignored
             }
+            
             return element;
         }
 
@@ -69,7 +71,7 @@ namespace UWP.Tools.Xaml {
                 }
 
             }
-
+            
             return list;
         }
 

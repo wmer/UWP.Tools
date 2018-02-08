@@ -45,7 +45,7 @@ namespace UWP.Tools.Navigation {
                 _extraContent = extra;
                 _pageTitle = pageTitle;
                 page.Loaded += Page_Loaded;
-            }catch(Exception e) {
+            } catch(Exception e) {
                 NavigationEventHub.OnNavigationFailed(page, new NavigationFailedEventArgs(pageTitle, _previousPage, typeof(T), extra, e));
             }
         }
@@ -69,6 +69,7 @@ namespace UWP.Tools.Navigation {
                     _previousExtraContent = null;
                     mainFrame.Content = _actualPage;
                     navigated = true;
+                    NavigationEventHub.OnNavigated(_previousPage, new NavigationEventArgs(_pageTitle, _nextPage, _actualPage, _extraContent));
                 }
             }
             return navigated;
@@ -82,7 +83,7 @@ namespace UWP.Tools.Navigation {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
-            NavigationEventHub.OnNavigated(_previousPage, new NavigationEventArgs(_pageTitle, _previousPage, _actualPage, _extraContent));
+            NavigationEventHub.OnNavigated(_actualPage, new NavigationEventArgs(_pageTitle, _previousPage, _actualPage, _extraContent));
         }
     }
 }
